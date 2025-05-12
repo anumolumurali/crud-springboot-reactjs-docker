@@ -1,0 +1,45 @@
+services:
+  frontend-app:
+    image: 'react-front-end:latest'
+    build:
+      context: ./react-front-end/
+    depends_on:
+      - backend-app
+
+    ports:
+      - 8080:80
+
+  backend-app:
+    image: 'spring-backend-demo:latest'
+    build:
+      context: ./spring-backend-demo/
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+    ports:
+      - "6868:8085"
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+    db:
+      external: true
+      name: employee-pg-data

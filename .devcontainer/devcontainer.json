@@ -1,0 +1,33 @@
+{
+    "name": "Java and Node.js Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/java:1": {
+        "version": "21",
+        "installMaven": true,
+        "installGradle": false
+      },
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts"
+      }
+    },
+    "runArgs": [
+        "--network=host",
+]   ,
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    },
+    "portsAttributes": {
+        "8080": {
+            "label": "Application",
+            "onAutoForward": "openBrowser"
+        }
+    }
+}

@@ -31,7 +31,7 @@ const ListEmployee = () => {
                     <tr>
                     <th>Employee FirstName</th>
                     <th>Employee LastName</th>
-                    <th>Employee Email</th>
+                    <th>Employee BirthDate</th>
                     <th>Actions</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@ const ListEmployee = () => {
                             <tr key= {employee.id}>
                                 <td key={employee.firstName}>{employee.firstName}</td>
                                 <td key={employee.lastName}>{employee.lastName}</td>
-                                <td key={employee.email}>{employee.email}</td>
+                                <td key={employee.birthDate}>{employee.birthDate}</td>
                                 <td><button className="btn btn-info" onClick={()=>editEmployee(employee.id)}>Update</button>
                                 <button className="btn btn-danger" onClick={() => deleteEmployee(employee.id)}>Delete</button>
                                 <button className="btn btn-secondary" onClick={() => viewEmployee(employee.id)}>View</button>

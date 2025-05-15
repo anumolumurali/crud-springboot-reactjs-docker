@@ -4,10 +4,14 @@ import com.example.springbackenddemo.exception.ResourceNotFoundException;
 import com.example.springbackenddemo.model.Employee;
 import com.example.springbackenddemo.repository.EmployeeRepository;
 import com.example.springbackenddemo.service.EmployeeService;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -22,7 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        Pageable firstPageWithHunderedElements = PageRequest.of(0, 100);
+        Page<Employee> employees = employeeRepository.findAll(firstPageWithHunderedElements);
+        return employees.stream().collect(Collectors.toList());
     }
 
     @Override
@@ -45,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         );
         existingEmployee.setFirstName(employee.getFirstName());
         existingEmployee.setLastName(employee.getLastName());
-        existingEmployee.setEmail(employee.getEmail());
+        existingEmployee.setBirthDate(employee.getBirthDate());
         // save existing employee to DB
         employeeRepository.save(existingEmployee);
         return existingEmployee;

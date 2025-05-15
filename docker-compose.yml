@@ -13,13 +13,13 @@ services:
     image: 'spring-backend-demo:latest'
     build:
       context: ./spring-backend-demo/
-    container_name: app
+    container_name: employee-backend-app
     depends_on:
-      - db
+      - employee-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://employee-db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -27,9 +27,9 @@ services:
     ports:
       - "6868:8085"
 
-  db:
+  employee-db:
     image: postgres
-    container_name: db
+    container_name: employee-db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

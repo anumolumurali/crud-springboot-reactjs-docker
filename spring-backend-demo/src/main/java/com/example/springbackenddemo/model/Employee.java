@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "employees")
+@Table(name = "employee", schema = "employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +14,7 @@ public class Employee {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "email")
-    private String email;
+    @Column(name = "birth_date")
+    @jakarta.persistence.Temporal(TemporalType.DATE)
+    private String birthDate;
 }

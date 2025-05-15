@@ -7,19 +7,19 @@ const CreateOrUpdateEmployee = () => {
     const {id} = useParams();
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
-    const [email,setEmail] = useState("");
+    const [birthDate,setBirthDate] = useState("");
     const changeFirstNameHandler = (event) => {
         setFirstName(event.target.value)
     }
     const changeLastNameHandler = (event) => {
         setLastName(event.target.value);
     }
-    const changeEmailHandler = (event) => {
-        setEmail(event.target.value);
+    const changeBirthDateHandler = (event) => {
+        setBirthDate(event.target.value);
     }
     const saveOrUpdateEmployee = (e) => {
         e.preventDefault();
-        const employee = {firstName: firstName,lastName:lastName,email:email};
+        const employee = {firstName: firstName,lastName: lastName,birthDate: birthDate};
         console.log(employee);
         if(id < 0){
             EmployeeService.createEmployee(employee).then(()=>{
@@ -42,7 +42,7 @@ const CreateOrUpdateEmployee = () => {
             const employee = res.data;
             setFirstName(employee.firstName);
             setLastName(employee.lastName);
-            setEmail(employee.email);
+            setBirthDate(employee.birthDate);
         }).catch(err => console.log(err));
     },[]);
     
@@ -77,14 +77,14 @@ const CreateOrUpdateEmployee = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Email</label>
+                        <label>BirthDate</label>
                         <input 
-                            type="text" 
-                            placeholder="Email" 
-                            name="email" 
+                            type="date" 
+                            placeholder="BirthDate" 
+                            name="birthDate" 
                             className="form-control" 
-                            value={email} 
-                            onChange={changeEmailHandler} 
+                            value={birthDate} 
+                            onChange={changeBirthDateHandler} 
                         />
                     </div>
                     <div className="button-group">

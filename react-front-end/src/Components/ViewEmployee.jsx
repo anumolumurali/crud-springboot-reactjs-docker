@@ -21,7 +21,7 @@ const ViewEmployee = () => {
         <ul class="list-group list-group-flush">
         <li class="list-group-item">First Name: {employee.firstName}</li>
         <li class="list-group-item">Last Name: {employee.lastName}</li>
-        <li class="list-group-item">Email: {employee.email}</li>
+        <li class="list-group-item">Birth Date: {employee.birthDate}</li>
         </ul>
         <button onClick={()=>{navigate('/')}} class="btn btn-primary">back</button>
         </div>

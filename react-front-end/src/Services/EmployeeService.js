@@ -4,6 +4,14 @@ class EmployeeService {
     getEmployees() {
         return axios.get(EMPLOYEE_BASE_URL);
     }
+    getEmployees(pageId, size) {
+        return axios.get(EMPLOYEE_BASE_URL, {
+            params: {
+            limit: size,
+            offset: (pageId - 1) * size,
+          }
+        });
+    }
     createEmployee(employee) {
         return axios.post(EMPLOYEE_BASE_URL,employee)
     }

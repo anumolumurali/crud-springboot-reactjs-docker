@@ -32,6 +32,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public Page<Employee> getAllEmployees(Pageable pageable) {
+        return employeeRepository.findAll(pageable);
+    }
+
+    @Override
     public Employee getEmployeeById(long id) {
 //        Optional<Employee> employee = employeeRepository.findById(id);
 //        if(employee.isPresent()) {
@@ -66,4 +71,5 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeRepository.deleteById(id);
     }
+
 }

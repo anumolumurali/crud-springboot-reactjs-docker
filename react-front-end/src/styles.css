@@ -1,0 +1,184 @@
+.employee-list-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.employee-list-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+.search-container button {
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95em;
+  border: 1px solid transparent;
+  transition: background-color 0.2s;
+}
+
+.search-button {
+  background-color: #3b82f6; /* blue-500 */
+  color: white;
+}
+.search-button:hover {
+  background-color: #2563eb; /* blue-600 */
+}
+
+.clear-button {
+  background-color: #6b7280; /* gray-500 */
+  color: white;
+}
+.clear-button:hover {
+  background-color: #4b5563; /* gray-600 */
+}
+
+
+.employee-card-div {
+  border: 1px solid #d1d5db; 
+  border-radius: 8px; 
+  padding: 16px; 
+  margin-bottom: 20px;
+  background-color: #ffffff; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.employee-card-div:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+}
+
+.employee-details-table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-bottom: 10px;
+}
+
+.employee-details-table th,
+.employee-details-table td {
+  padding: 8px 12px; 
+  text-align: left;
+  font-size: 0.9em; 
+  border-bottom: 1px solid #e5e7eb; 
+  vertical-align: top; /* Align content to the top for bio field */
+}
+
+.employee-details-table th {
+  font-weight: 600; 
+  color: #4b5563; 
+  width: 30%;
+}
+
+.employee-details-table td {
+  color: #1f2937; 
+}
+
+.employee-details-table input[type="text"],
+.employee-details-table input[type="date"],
+.employee-details-table input[type="email"],
+.employee-details-table input[type="tel"],
+.employee-details-table textarea {
+  width: calc(100% - 16px); /* Adjust for padding */
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 1em; /* Match td font-size */
+  box-sizing: border-box;
+  font-family: inherit; /* Inherit font from parent */
+}
+
+.employee-details-table textarea {
+  min-height: 80px; /* Minimum height for textarea */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.bio-display {
+  max-height: 100px; /* Max height before scrolling in view mode */
+  overflow-y: auto;   /* Enable vertical scroll if content exceeds max-height */
+  white-space: pre-wrap; /* Preserve line breaks and wrap text */
+  word-break: break-word; /* Break long words to prevent overflow */
+  border: 1px solid #e5e7eb; /* Optional: border to indicate scrollable area */
+  padding: 6px;
+  border-radius: 4px;
+  background-color: #f9fafb; /* Slightly different background */
+}
+
+
+.employee-details-table tr:last-child th,
+.employee-details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.action-buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.action-buttons button {
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.edit-button {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  color: white;
+}
+.edit-button:hover {
+  background-color: #2563eb; /* Tailwind blue-600 */
+}
+
+.save-button {
+  background-color: #10b981; /* Tailwind green-500 */
+  color: white;
+}
+.save-button:hover {
+  background-color: #059669; /* Tailwind green-600 */
+}
+
+.cancel-button {
+  background-color: #ef4444; /* Tailwind red-500 */
+  color: white;
+}
+.cancel-button:hover {
+  background-color: #dc2626; /* Tailwind red-600 */
+}
+
+
+.loader,
+.end-message,
+.no-employees {
+  padding: 25px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.no-employees {
+  font-weight: bold;
+}

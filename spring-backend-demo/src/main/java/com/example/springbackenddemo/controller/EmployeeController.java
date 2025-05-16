@@ -2,12 +2,15 @@ package com.example.springbackenddemo.controller;
 
 import com.example.springbackenddemo.model.Employee;
 import com.example.springbackenddemo.service.EmployeeService;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-@CrossOrigin(origins = {"http://localhost:8080/","http://localhost:6868/"})
+@CrossOrigin(origins = {"http://localhost:8080/","http://localhost:6868/", "http://localhost:3000/"})
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -22,10 +25,18 @@ public class EmployeeController {
         return new ResponseEntity<Employee>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
     }
     // build get all employees REST API
-    @GetMapping
+    /* @GetMapping
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
+    } */
+
+    @GetMapping
+    public ResponseEntity<Page<Employee>> getAllEmployees(
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
+        Page<Employee> entities = employeeService.getAllEmployees(pageable);
+        return ResponseEntity.ok(entities);
     }
+
     // build get employee by id REST API
     // http://localhost:8080/api/employees/1
     @GetMapping("{id}")

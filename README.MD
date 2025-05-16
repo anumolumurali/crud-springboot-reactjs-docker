@@ -13,4 +13,7 @@ docker compose down <br/>
 docker volume rm employee-pg-data <br/>
 docker rmi -f $(docker images -aq) <br/>
 
-The original project is fork from https://github.com/RameshMF/ReactJS-Spring-Boot-CRUD-Full-Stack-App
+### Adding the data to database
+psql -U postgres -d database_name < empoloyees_data.sql
+
+The original template is fork from <a href="https://github.com/RameshMF/ReactJS-Spring-Boot-CRUD-Full-Stack-App"> this </a> project.
